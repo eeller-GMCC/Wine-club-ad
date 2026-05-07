@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Meadow Wine Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark:   #1B3A22;
+    --green-mid:    #2D6040;
+    --green-light:  #3D7A52;
+    --green-pale:   #EAF2EC;
+    --white:        #FFFFFF;
+    --off-white:    #F7F9F7;
+    --rule:         #C5D9C9;
+    --text-muted:   #5A7260;
+    --gold:         #B8963E;
+    --gold-light:   #D4B068;
+  }
+
+  body {
+    background: #E8EDE9;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .ad {
+    width: 100%;
+    max-width: 640px;
+    background: var(--white);
+    box-shadow: 0 4px 32px rgba(27,58,34,0.12);
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--green-dark);
+    padding: 2.5rem 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-rule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .hr-line { flex: 1; max-width: 80px; height: 1px; background: var(--gold); opacity: 0.6; }
+  .hr-leaf {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .subhead {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Tiers ── */
+  .tiers-section {
+    padding: 2rem 1.75rem 0;
+    background: var(--off-white);
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .tier {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.25rem 1rem 1.25rem;
+    position: relative;
+  }
+
+  .tier.featured {
+    border-color: var(--green-mid);
+    border-width: 2px;
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green-mid);
+    color: var(--white);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 5px;
+  }
+
+  .tier-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--green-dark);
+    line-height: 1.1;
+    margin-bottom: 3px;
+  }
+
+  .tier-price {
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .tier-rule { height: 1px; background: var(--rule); margin-bottom: 12px; }
+
+  .tier-total {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .tier-total strong {
+    font-weight: 600;
+    color: var(--green-dark);
+  }
+
+  .tier-feature {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    padding-left: 10px;
+    position: relative;
+  }
+
+  .tier-feature::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--green-light);
+  }
+
+  /* ── Event pricing table ── */
+  .table-section {
+    padding: 0 1.75rem 1.75rem;
+    background: var(--off-white);
+  }
+
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    font-size: 11.5px;
+  }
+
+  .event-table thead tr {
+    background: var(--green-dark);
+  }
+
+  .event-table thead th {
+    padding: 9px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .event-table thead th:first-child { color: rgba(255,255,255,0.9); }
+
+  .event-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .event-table tbody tr:last-child { border-bottom: none; }
+
+  .event-table tbody td {
+    padding: 9px 10px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .event-table tbody td:first-child {
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+
+  .event-table td.incl {
+    color: var(--green-mid);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CTA footer ── */
+  .cta-section {
+    background: var(--green-dark);
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .cta-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    max-width: 340px;
+  }
+
+  .cta-btn {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 11px 26px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .cta-btn:hover { background: var(--gold-light); }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    background: #132B18;
+    padding: 10px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .bottom-bar-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+  .bottom-bar span {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="ad">
+
+  <div class="header">
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <div class="hr-leaf"></div>
+      <div class="hr-line"></div>
+    </div>
+    <p class="eyebrow">Green Meadow Country Club &nbsp;&bull;&nbsp; Now Launching</p>
+    <h1 class="headline">The Wine <em>Club</em></h1>
+    <p class="subhead">An exclusive members-only experience curated around great wine, great company, and the stories behind every bottle. No expertise required.</p>
+    <div class="header-rule">
+      <div class="hr-line"></div>
+      <div class="hr-leaf"></div>
+      <div class="hr-line"></div>
+    </div>
+  </div>
+
+  <div class="tiers-section">
+    <p class="section-label">Choose your membership level</p>
+    <div class="tier-grid">
+
+      <div class="tier">
+        <span class="tier-badge">Tier 1</span>
+        <p class="tier-name">Club Member</p>
+        <p class="tier-price">$50 of your existing $75 minimum is allocated to the wine club &mdash; nothing extra out of pocket</p>
+        <div class="tier-rule"></div>
+        <div class="tier-total">Total monthly cost: <strong>$50</strong></div>
+        <div class="tier-rule"></div>
+        <div class="tier-feature">1 curated bottle / month</div>
+        <div class="tier-feature">Discounted event entry &mdash; $40</div>
+        <div class="tier-feature">Monthly tasting newsletter</div>
+      </div>
+
+      <div class="tier featured">
+        <div class="featured-tag">Best value</div>
+        <span class="tier-badge">Tier 2</span>
+        <p class="tier-name">Enthusiast</p>
+        <p class="tier-price">$75 minimum + $50 wine club top-up</p>
+        <div class="tier-rule"></div>
+        <div class="tier-total">Total monthly cost: <strong>$125</strong></div>
+        <div class="tier-rule"></div>
+        <div class="tier-feature">2 curated bottles / month</div>
+        <div class="tier-feature">1 complimentary event / month</div>
+        <div class="tier-feature">Priority registration</div>
+      </div>
+
+      <div class="tier">
+        <span class="tier-badge">Tier 3</span>
+        <p class="tier-name">Collector</p>
+        <p class="tier-price">$75 minimum + $125 wine club top-up</p>
+        <div class="tier-rule"></div>
+        <div class="tier-total">Total monthly cost: <strong>$200</strong></div>
+        <div class="tier-rule"></div>
+        <div class="tier-feature">2 premium bottles / month</div>
+        <div class="tier-feature">All events complimentary</div>
+        <div class="tier-feature">Guest pass each quarter</div>
+        <div class="tier-feature">Annual sommelier consult</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="table-section">
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Walk-in</th>
+          <th>Tier 1</th>
+          <th>Tier 2</th>
+          <th>Tier 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monthly tasting</td>
+          <td>$65</td>
+          <td>$40</td>
+          <td class="incl">Included</td>
+          <td class="incl">Included</td>
+        </tr>
+        <tr>
+          <td>Pairing dinner</td>
+          <td>$95</td>
+          <td>$70</td>
+          <td>$70</td>
+          <td class="incl">Included</td>
+        </tr>
+        <tr>
+          <td>Winemaker event</td>
+          <td>$85</td>
+          <td>$60</td>
+          <td>$60</td>
+          <td class="incl">Included</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta-section">
+    <p class="cta-text">"A relaxed, welcoming space to explore wine &mdash; all levels welcome."</p>
+    <a class="cta-btn" href="mailto:eeller@gmcchelena.com">Join the Club</a>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar-line"></div>
+    <span><a href="mailto:eeller@gmcchelena.com" style="color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:0.2em;">Inquire with Eli</a></span>
+    <div class="bottom-bar-line"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
