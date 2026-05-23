@@ -190,6 +190,36 @@
 
   .insight strong { font-weight: 600; }
 
+  /* ── Context note ── */
+  .context-note {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #FAEEDA;
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .context-note-icon {
+    font-size: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .context-note-text {
+    font-size: 12px;
+    font-weight: 300;
+    color: #633806;
+    line-height: 1.65;
+  }
+
+  .context-note-text strong {
+    font-weight: 600;
+    color: #633806;
+  }
+
   /* ── Legend ── */
   .legend {
     display: flex; flex-wrap: wrap; gap: 14px;
@@ -462,10 +492,20 @@
     border-left: 2px solid var(--rule);
   }
 
-  /* ── Mobile additions ── */
+  /* ── Mobile ── */
   @media (max-width: 620px) {
+    body { background: var(--white); }
+    .page { max-width: 100%; }
+    .header { padding: 2rem 1.5rem 1.75rem; }
+    .header h1 { font-size: 30px; }
+    .metrics-bar { grid-template-columns: 1fr 1fr; padding: 1.25rem 1.5rem; gap: 1px; }
+    .metric-value { font-size: 26px; }
+    .metric-label { font-size: 9px; }
+    .body { padding: 1.75rem 1.5rem; }
+    .two-col, .three-col, .feedback-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem 1.5rem; }
     .cal-grid { grid-template-columns: repeat(2, 1fr); }
-  }
+    .ad-header { padding: 2rem 1.5rem 1.75rem; }
     .ad-headline { font-size: 28px; }
     .tiers-wrap, .event-wrap { padding: 1.5rem 1rem 0; }
     .event-wrap { padding-bottom: 1rem; }
@@ -476,17 +516,6 @@
     .ad-bottom { padding: 10px 1.5rem; }
     .event-tbl { font-size: 10px; }
     .event-tbl thead th, .event-tbl tbody td { padding: 7px 7px; }
-  }
-  @media (max-width: 620px) {
-    body { background: var(--white); }
-    .page { max-width: 100%; }
-    .header { padding: 2rem 1.5rem 1.75rem; }
-    .header h1 { font-size: 30px; }
-    .metrics-bar { grid-template-columns: 1fr 1fr; padding: 1.25rem 1.5rem; gap: 1px; }
-    .metric-value { font-size: 26px; }
-    .body { padding: 1.75rem 1.5rem; }
-    .two-col, .three-col, .feedback-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem 1.5rem; }
   }
 </style>
 </head>
@@ -519,7 +548,7 @@
     </div>
     <div class="metric">
       <div class="metric-value">3.75</div>
-      <div class="metric-label">Avg interest (out of 5)</div>
+      <div class="metric-label">Avg interest / 5</div>
     </div>
     <div class="metric">
       <div class="metric-value">63%</div>
@@ -752,7 +781,7 @@
             <div class="legend-item"><div class="legend-dot" style="background:#B8963E"></div>Not sure yet (12%)</div>
             <div class="legend-item"><div class="legend-dot" style="background:#1B3A22"></div>Yes, definitely (14%)</div>
           </div>
-          <div class="insight"><strong>61% are open to a membership structure.</strong> This figure grew with each successive wave of responses as members learned more about the program.</div>
+          <div class="insight">61% of members expressed openness to a structured membership — a strong foundation to build from.</div>
         </div>
 
       </div>
@@ -784,6 +813,7 @@
           <div class="cal-event">
             <span class="cal-event-type off">Off month</span>
             <p class="cal-event-name off-name">Monthly bottle delivery &amp; tasting notes</p>
+            <p class="cal-event-name off-name" style="margin-top:4px;">T2 $30 &bull; T3 $50 dining credit applied</p>
           </div>
         </div>
 
@@ -818,6 +848,7 @@
           <div class="cal-event">
             <span class="cal-event-type off">Off month</span>
             <p class="cal-event-name off-name">Monthly bottle delivery &amp; tasting notes</p>
+            <p class="cal-event-name off-name" style="margin-top:4px;">T2 $30 &bull; T3 $50 dining credit applied</p>
           </div>
         </div>
 
@@ -852,6 +883,7 @@
           <div class="cal-event">
             <span class="cal-event-type off">Off month</span>
             <p class="cal-event-name off-name">Monthly bottle delivery &amp; tasting notes</p>
+            <p class="cal-event-name off-name" style="margin-top:4px;">T2 $30 &bull; T3 $50 dining credit applied</p>
           </div>
         </div>
 
@@ -886,6 +918,7 @@
           <div class="cal-event">
             <span class="cal-event-type off">Off month</span>
             <p class="cal-event-name off-name">Monthly bottle delivery &amp; tasting notes</p>
+            <p class="cal-event-name off-name" style="margin-top:4px;">T2 $30 &bull; T3 $50 dining credit applied</p>
           </div>
         </div>
 
